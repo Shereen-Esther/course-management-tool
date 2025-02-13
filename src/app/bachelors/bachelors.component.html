@@ -1,0 +1,71 @@
+<div class="bachelors-container">
+    <div class="main-heading">Course Guide</div>
+    <div class="sub-heading">General Education</div>
+    <!-- Dropdown for courses -->
+    <!-- <div *ngFor="let dropdown of dropdowns; let i = index">
+        <div class="course-name">{{ dropdown.label }}</div>
+        <mat-form-field appearance="outline">
+          <mat-label>Select courses completed from this segment</mat-label>
+          <mat-select
+            [(value)]="selectedOptionsMap['dropdown' + (i + 1)]"
+            multiple
+          >
+            <mat-option *ngFor="let option of dropdown.options" [value]="option.value">
+              {{ option.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <p>Selected Options for {{ dropdown.label }}: {{ selectedOptionsMap['dropdown' + (i + 1)] }}</p>
+      </div> -->
+
+      <div *ngFor="let dropdown of dropdowns; let i = index">
+        <div class="course-name">{{ dropdown.label }}</div>
+        <mat-form-field appearance="outline">
+          <mat-label>Select courses completed from this segment</mat-label>
+          <mat-select
+            [(value)]="selectedOptionsMap['dropdown' + (i + 1)]"
+            multiple
+          >
+            <mat-option
+              *ngFor="let option of dropdown.options"
+              [value]="option.value"
+            >
+              {{ option.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <p>
+          Selected Options for {{ dropdown.label }}: 
+          {{ selectedOptionsMap['dropdown' + (i + 1)] }}
+        </p>
+        <p>Total Credits: {{ totalCreditsMap['dropdown' + (i + 1)] }}</p>
+      </div>
+      
+      <!-- Grand total credits -->
+      <div class="grand-total">
+        <h3>Total Credits for General Education: {{ grandTotalCredits }}</h3>
+      </div>
+      
+    
+    <div class="course-name">Vocation and Service</div>
+    <div class="course-name">Capstone</div>
+
+    <!-- Compentencies -->
+    <div class="course-name">Competencies 10-15</div>
+    <div class="course-name">Writing Requirements (3-4)</div>
+    <div class="course-name">Communication Arts (3-4)</div>
+    <div class="course-name">Quantitative Reasoning (3-4)</div>
+    <div class="course-name">Health and Wellness (1-3)</div>
+
+    <!-- Exploration 1A and 1B -->
+    <div class="course-name">Explorations (11-17)</div>
+    <div class="course-name">Avenue 1 - Travel to a cross-cultural site and complete reflection.</div>
+    <div class="course-name">Option 1A (0-4)</div>
+    <div class="course-name">Option 1B (0-1)</div>
+    <div class="course-name">Avenue 2 - Study of a non-western civilization in an approved course (3)</div>
+    <div class="course-name">Natural Science (4)</div>
+    <div class="course-name">Social Science (3)</div>
+    <div class="course-name">The Arts (1-3)</div>
+    <div class="course-name">Literature (3)</div>
+
+</div>
