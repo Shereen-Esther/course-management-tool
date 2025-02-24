@@ -1,0 +1,44 @@
+<div class="bachelors-container">
+    <div class="main-heading">Course Guide</div>
+    <div class="sub-heading">General Education</div>
+    <div *ngFor="let course of courses; let i = index" class="course-container">
+        <!-- Course Heading -->
+        <h1>{{ course.heading }}</h1>
+        <p style="color: gray;"><em>Requirement: Select at least {{ course.requirement }} subcourse(s)</em></p>
+        
+        <!-- Dropdown for Subcourses -->
+        <mat-form-field appearance="outline" class="course-dropdown">
+          <mat-label>Select subcourses</mat-label>
+          <mat-select 
+            [value]="selectedMap[i]"
+            (selectionChange)="onSelectionChange(i, $event.value)"
+            multiple>
+            <mat-option *ngFor="let sub of course.subcourses" [value]="sub.value">
+              {{ sub.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        <!-- Error Message if Requirement is not met -->
+        <div *ngIf="!isRequirementMet(i)" class="error">
+          Please select at least {{ course.requirement }} subcourse(s).
+        </div>
+        
+        <!-- Display Course Total Credits -->
+        <p>Total Credits for this course: {{ courseCredits[i] }}</p>
+      </div>
+      
+      <!-- Overall Total Credits -->
+      <div class="overall-total">
+        <h2>Overall Total Credits: {{ overallCredits }}</h2>
+      </div>
+      
+</div>
+
+
+
+
+
+
+
+ 
