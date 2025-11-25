@@ -5,7 +5,7 @@ import { SampleComponent } from './sample/sample.component';
 
 @Component({
   selector: 'app-root',
-  imports: [SampleComponent],
+  imports: [BachelorsComponent, SampleComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

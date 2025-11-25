@@ -1,44 +1,49 @@
 <div class="bachelors-container">
-    <div class="main-heading">Course Guide</div>
-    <div class="sub-heading">General Education</div>
-    <div *ngFor="let course of courses; let i = index" class="course-container">
-        <!-- Course Heading -->
-        <h1>{{ course.heading }}</h1>
-        <p style="color: gray;"><em>Requirement: Select at least {{ course.requirement }} subcourse(s)</em></p>
-        
-        <!-- Dropdown for Subcourses -->
-        <mat-form-field appearance="outline" class="course-dropdown">
-          <mat-label>Select subcourses</mat-label>
-          <mat-select 
-            [value]="selectedMap[i]"
-            (selectionChange)="onSelectionChange(i, $event.value)"
-            multiple>
-            <mat-option *ngFor="let sub of course.subcourses" [value]="sub.value">
-              {{ sub.label }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        
-        <!-- Error Message if Requirement is not met -->
-        <div *ngIf="!isRequirementMet(i)" class="error">
-          Please select at least {{ course.requirement }} subcourse(s).
-        </div>
-        
-        <!-- Display Course Total Credits -->
-        <p>Total Credits for this course: {{ courseCredits[i] }}</p>
+  <div class="main-heading">COURSE GUIDE</div>
+  <div class="webpage-description">The Course Guide website helps students track their completed credits and monitor the remaining credits needed to
+    fulfill their educational requirements. It highlights mandatory courses, ensuring students meet their general
+    education criteria. Additionally, the platform provides guidance on which courses are essential for specific majors,
+    helping students make informed decisions to successfully complete their academic journey.</div>
+  <div class="sub-heading">General Education</div>
+  <div class="description"> Note: All courses taken for general education purposes must have the G suffix designation.
+
+  </div>
+
+  <div *ngFor="let course of courses; let i = index">
+    <div class="mainheading"> {{course.mainheading}} </div>
+    <div class="description"> {{course.description}} </div>
+
+    <div class="course-container">
+      <!-- Course Heading -->
+      <h1>{{ course.heading }}</h1>
+      <div class="subdescription"> {{course.subdescription}} </div>
+      <p style="color: gray;"><b>Requirement:</b> Select at least {{ course.requirement }} subcourse(s)</p>
+
+      <!-- Dropdown for Subcourses -->
+      <mat-form-field appearance="outline" class="course-dropdown">
+        <mat-label>Select subcourses</mat-label>
+        <mat-select [value]="selectedMap[i]" (selectionChange)="onSelectionChange(i, $event.value)" multiple>
+          <mat-option *ngFor="let sub of course.subcourses" [value]="sub.value">
+            <div *ngIf="sub.mandatory" style="color: #f15a2a;"> {{ sub.label }} </div>
+            <div *ngIf="!sub.mandatory"> {{ sub.label }} </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Error Message if Requirement is not met -->
+      <div *ngIf="!isRequirementMet(i)" class="error">
+        Please select at least {{ course.requirement }} subcourse(s).
       </div>
-      
-      <!-- Overall Total Credits -->
-      <div class="overall-total">
-        <h2>Overall Total Credits: {{ overallCredits }}</h2>
-      </div>
-      
+
+      <!-- Display Course Total Credits -->
+      <b style="text-align: center;">Total Credits for this course: {{ courseCredits[i] }}</b>
+    </div>
+  </div>
+
+  <!-- Overall Total Credits -->
+  <div class="overall-total">
+    <h2>Total Required 39-54 Hours <br>Total Required plus possible Preparatory 39-63 Hours</h2>
+    <h2><b>Overall Total Credits Completed for General Education: {{ overallCredits }}</b></h2>
+  </div>
+
 </div>
-
-
-
-
-
-
-
- 
